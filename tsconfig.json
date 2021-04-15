@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemastore.azurewebsites.net/schemas/json/tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2017",
+        "module": "CommonJS",
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "experimentalDecorators": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "lib": [
+            "dom",
+            "es7"
+        ],
+        "skipLibCheck": true
+    }
+}

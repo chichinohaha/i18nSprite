@@ -11,6 +11,10 @@
 开发过程中请使用 `asset/logo.png`
 发布时在配置面板的 language 输入框中输入 en ，即可在打包后替换成 logo_en.png
 
+### Test - 测试
+
+在3.1编辑器的导入 project.zip 并使用 scene 来测试
+
 ## Notes - 注意事项
 
 暂时不支持使用自动图集功能。

@@ -7,11 +7,13 @@ export async function onAfterBuildAssets(options: IBuildTaskOption, result: IBui
     if (options.packages) {
         const language = options.packages['i18n-sprite']?.language;
         if (language) {
-            const imageInfos = await Editor.Message.request('asset-db', 'query-assets', { type:'image', pattern:'db://assets/**/*' });
-            imageInfos.forEach(async targetAsset => {
+            const imageInfos = await Editor.Message.request('asset-db', 'query-assets', { type: 'image', pattern: 'db://assets/**/*' });
+            for (let index = 0; index < imageInfos.length; index++) {
+                const targetAsset = imageInfos[index];
                 if (result.containsAsset(targetAsset.uuid)) {
                     const extName = extname(targetAsset.file);
-                    const sourceAsset = (await Editor.Message.request('asset-db', 'query-assets', { type:'image', 'pattern':`${targetAsset.path}_${language}${extName}`,
+                    const sourceAsset = (await Editor.Message.request('asset-db', 'query-assets', {
+                        type: 'image', 'pattern': `${targetAsset.path}_${language}${extName}`,
                     }))[0];
                     if (sourceAsset) {
                         const rawAssetPaths = result.getRawAssetPaths(targetAsset.uuid);
@@ -23,13 +25,12 @@ export async function onAfterBuildAssets(options: IBuildTaskOption, result: IBui
                         copySync(sourceFile, targetFile);
                         console.log('[i18n sprite] Replaced successfully.', sourceFile, 'to', targetFile);
 
+
                     }
                 }
 
-            });
-
+            }
         }
-
     }
 }
 

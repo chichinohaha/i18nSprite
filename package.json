@@ -1,11 +1,16 @@
 {
     "name": "i18n-sprite",
     "package_version": 2,
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "an extension to make the images multilingual",
     "main": "dist/main.js",
     "contributions": {
-        "builder": "dist/builder.js"
+        "builder": "dist/builder.js",
+        "asset-db": {
+            "mount": {
+                "path": "./assets"
+            }
+        }
     },
     "scripts": {
         "watch": "tsc -w",
